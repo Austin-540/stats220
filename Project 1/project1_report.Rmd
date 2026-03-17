@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ```{css}
-@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans');
 body {
   background: linear-gradient(90deg,rgb(187, 223, 250) 0%, rgb(51, 255, 169) 50%, rgb(187,223,250) 100%);
   background-size: 200% 200%;
@@ -20,7 +20,7 @@ body {
 @keyframes backgroundAnimation {
   0% {background-position: 0% 50%}
   100% {background-position: 200% 50%}
-}
+} 
 
 h1, h2, h3, .author {
   font-family: "Cal Sans", sans-serif;
@@ -60,16 +60,18 @@ To change the original comic, I covered up the text saying "I run linux" using a
 ![](my_animated_meme.gif)
 
 ## Creativity
-I think my project demonstrates creativity because:
+My project demonstrates creativity because:
 
 * My animated meme adds another gif into one of the frames of my meme. 
 * To get each panel of the comic I used `image_crop()`, which was not in the lab.
 * To put the explosion frames on top of panel 6 I used `image_composite()`, which was not in the lab.
-* Using a gradient background in the CSS, and a white-blur background for each section to make my report look more interesting.
+* I used a gradient background with a simple animation and a white-blur background for each section using CSS made my report look more interesting.
 
 
 ## Learning reflection
+I think from module 1, I thought that the most important idea we learned about was using vectors. I found them very useful when I was loading in all the frames from the explosion effect. If I hadn't used a vector at that stage, I would have had to manually type out `explosion_frame_n` many times, duplicated a lot of code, and probably would have made a typo somewhere that would take me a long time to find. Vectors were useful for keeping multiple values inside one name, so that it can be used as a function input or iterated through in a for loop. 
 
+I am curious about how we can use our abilities to create images with R to create useful images that can share information, instead of just making memes. I think the tools we used for this assignment will probably be useful for future data visualization tasks, so I'm interested in seeing what else we can make.
 
 ## Appendix
 

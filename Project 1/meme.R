@@ -33,7 +33,9 @@ for (num in 3:17) {  #Honestly I should have just not bothered with a loop - it 
 }
 
 
-frames <- c(frame1, frame1, frame1, frame1, frame2, frame2, frame2, frame2, frame2, frame2, frame3, frame3, frame4, frame4, frame5, frame5, frame6, explosion_frames)
+frames <- c(frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame1, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame2, frame3, frame3, frame4, frame4, frame5, frame5, frame6, explosion_frames)
+# Duplicating frames with text on them so that you can actually have a chance of being able to read them
+
 image_animate(frames, fps=5) %>%
   image_write("my_animated_meme.gif")
 

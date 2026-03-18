@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ```{css}
-@import url('https://fonts.googleapis.com/css2?family=Cal+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&display=swap');
 body {
   background: linear-gradient(90deg,rgb(187, 223, 250) 0%, rgb(51, 255, 169) 50%, rgb(187,223,250) 100%);
   background-size: 200% 200%;
@@ -27,8 +27,12 @@ h1, h2, h3, .author {
   padding: 10px;
 }
 
-div:not([class="container-fluid main-container"]) { 
-/* I thought it was strange that R Studio had Chrome's HTML inspector, but it turned out to be useful for getting that class name */
+.author {
+  font-family: "Micro 5";
+}
+
+div:not(.main-container, .float, .figcaption) { 
+/* I thought it was strange that R Studio had Chrome's HTML inspector, but it turned out to be useful for getting those class names */
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   border-radius: 10px;

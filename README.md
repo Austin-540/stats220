@@ -2,7 +2,7 @@
 
 This is my repo for *STATS 220.*
 
-Project 1 is at [https://austin-540.github.io/stats220/Project%201/project1_report.html](https://austin-540.github.io/stats220/Project%201/project1_report.html)
+Project 1 is at [https://austin-540.github.io/stats220/Project%201/project1_report](https://austin-540.github.io/stats220/Project%201/project1_report)
 
 ## A little about me:
 

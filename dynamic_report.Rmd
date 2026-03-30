@@ -10,6 +10,32 @@ library(tidyverse)
 ```
 
 ```{css}
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Roboto&display=swap');
+
+h2 {
+  font-family: "Cal Sans";
+}
+
+* {
+  font-family: "Roboto";
+}
+
+#how-long-are-armand-and-austins-commutes-to-and-from-university {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  position: relative;
+  width: 90vw;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 40px auto;
+}
+
+body {
+  background-image: url("https://austin-540.github.io/stats220/docs/blob-scene-haikei3.svg");
+  background-size: cover;
+  background-color: black;
+  background-repeat: no-repeat;
+} 
 
 ```
 
@@ -34,6 +60,7 @@ ggplot(latest_data.rounded) +
        y = "Number of journies",
        title = "Durations of people in the data's commutes to and from campus.",
   )
+
 
 ggplot(latest_data.rounded) + 
   geom_bar(aes(x=method), fill="#000080") +

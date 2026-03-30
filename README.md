@@ -4,6 +4,8 @@ This is my repo for *STATS 220.*
 
 Project 1 is at [https://austin-540.github.io/stats220/Project%201/project1_report](https://austin-540.github.io/stats220/Project%201/project1_report)
 
+Project 2's report is at [https://austin-540.github.io/stats220/](https://austin-540.github.io/stats220/)
+
 ## A little about me:
 
 * I am undertaking a degree in Stats and Computer Science

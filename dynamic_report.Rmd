@@ -1,0 +1,49 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+
+```
+
+```{css}
+
+```
+
+## How long are Armand and Austin's commutes to and from university?
+
+```{r}
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRetKKj9bMRzvsbYOusSWE0uw2oEJIxmDjFP6C2U79SCUlN05jlOH4OHHo5kVT4mpo5BdYi9q9NZh7w/pub?gid=49993136&single=true&output=csv")
+
+latest_data <- rename(logged_data, timestamp = 1, method = 2, duration = 3, start_time = 4)
+
+
+
+latest_data_durations.rounded <- latest_data$duration %>% 
+  round(-1) #Round the durations to the 10s place
+latest_data.rounded <- latest_data
+latest_data.rounded$duration <- latest_data_durations.rounded
+
+ggplot(latest_data.rounded) + 
+  geom_bar(aes(x=duration, fill = method)) + 
+  theme_minimal() +
+  labs(x = "Duration in minutes - rounded to the closest 10 minutes",
+       y = "Number of journies",
+       title = "Durations of people in the data's commutes to and from campus.",
+  )
+
+ggplot(latest_data.rounded) + 
+  geom_bar(aes(x=method), fill="#000080") +
+  theme_minimal() +
+  labs(x = "Transportation method",
+       y = "Number of journies",
+       title = "Number of journies made to campus by transportation method")
+
+```
+
+There have been `r nrow(latest_data)` commutes timed in the data. The mean commute length recorded is `r round(mean(latest_data$duration),0)` minutes.
+
+

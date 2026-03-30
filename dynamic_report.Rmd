@@ -5,7 +5,6 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-library(tidyverse)
 
 ```
 
@@ -42,6 +41,8 @@ body {
 ## How long are Armand and Austin's commutes to and from university?
 
 ```{r}
+library(tidyverse)
+
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRetKKj9bMRzvsbYOusSWE0uw2oEJIxmDjFP6C2U79SCUlN05jlOH4OHHo5kVT4mpo5BdYi9q9NZh7w/pub?gid=49993136&single=true&output=csv")
 
 latest_data <- rename(logged_data, timestamp = 1, method = 2, duration = 3, start_time = 4)

@@ -68,12 +68,22 @@ ggplot(latest_data.rounded) +
   )
 
 
-ggplot(latest_data.rounded) + 
-  geom_bar(aes(x=method), fill="#000080") +
+latest_data.bus <- latest_data
+latest_data.car <- latest_data
+for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of doing this in a future module...
+  if (latest_data$method[i] == "Bus") {
+    latest_data.car <- latest_data.car[-i,]
+  } else if (latest_data$method[i] == "Car") {
+    latest_data.bus <- latest_data.bus[-i,]
+  } 
+}
+
+mean_times <- data.frame(method=c("Bus", "Car"), duration=c(mean(latest_data.bus$duration), mean(latest_data.car$duration)))
+ggplot(mean_times) + 
+  geom_col(aes(x=method, y=duration), fill="#16cd25") + #Had to switch the type of geom here
   theme_minimal() +
-  labs(x = "Transportation method",
-       y = "Number of journies",
-       title = "Number of journies made to campus by transportation method")
+  labs(x = "Transportation method", y = "Mean duration in minutes",
+       title = "Mean commute duration by method")
 
 ```
 

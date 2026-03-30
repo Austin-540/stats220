@@ -32,16 +32,29 @@ ggplot(latest_data.rounded) +
   labs(x = "Transportation method",
        y = "Number of journies",
        title = "Number of journies made to campus by transportation method")
-#Interesting to see the ratio
+#Kind of interesting to see the ratio, but its not that useful.
+
+
+latest_data.bus <- latest_data
+latest_data.car <- latest_data
+for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of doing this in a future module...
+  if (latest_data$method[i] == "Bus") {
+    latest_data.car <- latest_data.car[-i,]
+  } else if (latest_data$method[i] == "Car") {
+    latest_data.bus <- latest_data.bus[-i,]
+ } 
+}
+
+mean_times <- data.frame(method=c("Bus", "Car"), duration=c(mean(latest_data.bus$duration), mean(latest_data.car$duration)))
+ggplot(mean_times) + 
+  geom_col(aes(x=method, y=duration), fill="#36fd45") + #Had to switch the type of geom here
+  theme_minimal()
+#Honestly right now it doesn't show a big difference but maybe in the future it will. Either way it's useful.
 
 
 
 
-
-
-
-
-# For my report I will use the rounded data chart and number of journeys by method plots
+# For my report I will use the rounded data chart and mean duration by method plots
 # And I will include the number of rows of data collected, and the mean journey time
 # This will require the following R code:
 
@@ -69,9 +82,20 @@ ggplot(latest_data.rounded) +
        title = "Durations of people in the data's commutes to and from campus.",
   )
 
-ggplot(latest_data.rounded) + 
-  geom_bar(aes(x=method), fill="#000080") +
+
+latest_data.bus <- latest_data
+latest_data.car <- latest_data
+for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of doing this in a future module...
+  if (latest_data$method[i] == "Bus") {
+    latest_data.car <- latest_data.car[-i,]
+  } else if (latest_data$method[i] == "Car") {
+    latest_data.bus <- latest_data.bus[-i,]
+  } 
+}
+
+mean_times <- data.frame(method=c("Bus", "Car"), duration=c(mean(latest_data.bus$duration), mean(latest_data.car$duration)))
+ggplot(mean_times) + 
+  geom_col(aes(x=method, y=duration), fill="#26ed35") + #Had to switch the type of geom here
   theme_minimal() +
-  labs(x = "Transportation method",
-       y = "Number of journies",
-       title = "Number of journies made to campus by transportation method")
+  labs(x = "Transportation method", y = "Mean duration in minutes",
+       title = "Mean commute duration by method")

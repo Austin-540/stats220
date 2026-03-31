@@ -1,0 +1,58 @@
+---
+title: "Project 2"
+author: "Austin Sarney"
+output: 
+  html_document:
+    code_folding: hide
+subtitle: "STATS 220 Semester One, 2026"
+---
+
+```{css}
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&display=swap');
+
+body {background: #001220;}
+#header {background: #c7ffc7;}
+.author {font-family: "Micro 5", sans-serif;}
+h1, h2, h3 {font-family: "Cal Sans", sans-serif;}
+
+div:not(.main-container) {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+The focus of my data collection was seeing the duration of the commutes that Armand and I take to and from university. Because we also tend to take different methods of transport, this was also something that was tracked.
+
+When designing the form we followed guideline 4 by using data validation. The question asking for the duration of the journey used response validation to ensure that only values between 1 and 120 were accepted (120 was chosen as the maximum time because that is about how long it takes to get to Auckland from Hamilton in the morning - which I consider to be the longest journey that still counts as a commute), with no non-number characters accepted. All the questions were made required because all commutes have a start time, method, and duration. 
+
+The data collected will allow me to see whether there is a difference between the time that it takes for me and my friend to commute, and because the method is a variable, it can be split into showing me just data from driving or just data from public transport. The data will be useful for me because it can help me have an accurate judge of how long I should account for me to get to uni or to home.
+
+[Link - https://forms.gle/ZJcWS5FopjzUCPMS8](https://forms.gle/ZJcWS5FopjzUCPMS8)
+
+Form design and data collection for this project were completed as a group. My group members were myself and Armand Spencer.
+
+## Dynamic report
+
+[Link - https://austin-540.github.io/stats220/](https://austin-540.github.io/stats220/)
+
+## Creativity
+
+## Learning reflection
+
+## Appendix
+
+```{r file='exploration.R', eval=FALSE, echo=TRUE}
+
+```
+```{r file='../dynamic_report.Rmd', eval=FALSE, echo=TRUE}
+
+```

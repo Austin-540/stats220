@@ -444,6 +444,44 @@ display: none;
 </div>
 
 
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The focus of my data collection was seeing the duration of the
+commutes that Armand and I take to and from university. Because we also
+tend to take different methods of transport, this was also something
+that was tracked.</p>
+<p>When designing the form we followed guideline 4 by using data
+validation. The question asking for the duration of the journey used
+response validation to ensure that only values between 1 and 120 were
+accepted (120 was chosen as the maximum time because that is about how
+long it takes to get to Auckland from Hamilton in the morning - which I
+consider to be the longest journey that still counts as a commute), with
+no non-number characters accepted. All the questions were made required
+because all commutes have a start time, method, and duration.</p>
+<p>The data collected will allow me to see whether there is a difference
+between the time that it takes for me and my friend to commute, and
+because the method is a variable, it can be split into showing me just
+data from driving or just data from public transport. The data will be
+useful for me because it can help me have an accurate judge of how long
+I should account for me to get to uni or to home.</p>
+<p><a href="https://forms.gle/ZJcWS5FopjzUCPMS8">Link -
+https://forms.gle/ZJcWS5FopjzUCPMS8</a></p>
+<p>Form design and data collection for this project were completed as a
+group. My group members were myself and Armand Spencer.</p>
+</div>
+<div id="dynamic-report" class="section level2">
+<h2>Dynamic report</h2>
+<p><a href="https://austin-540.github.io/stats220/">Link -
+https://austin-540.github.io/stats220/</a></p>
+</div>
+<div id="creativity" class="section level2">
+<h2>Creativity</h2>
+</div>
+<div id="learning-reflection" class="section level2">
+<h2>Learning reflection</h2>
+</div>
+<div id="this-documents-css" class="section level2">
+<h2>This document’s CSS</h2>
 <pre class="css"><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Cal+Sans&amp;family=Micro+5&amp;display=swap&#39;);
 
 body {background: #001220;}
@@ -484,41 +522,6 @@ padding: 10px;
 margin: 10px;
 }
 </style>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>The focus of my data collection was seeing the duration of the
-commutes that Armand and I take to and from university. Because we also
-tend to take different methods of transport, this was also something
-that was tracked.</p>
-<p>When designing the form we followed guideline 4 by using data
-validation. The question asking for the duration of the journey used
-response validation to ensure that only values between 1 and 120 were
-accepted (120 was chosen as the maximum time because that is about how
-long it takes to get to Auckland from Hamilton in the morning - which I
-consider to be the longest journey that still counts as a commute), with
-no non-number characters accepted. All the questions were made required
-because all commutes have a start time, method, and duration.</p>
-<p>The data collected will allow me to see whether there is a difference
-between the time that it takes for me and my friend to commute, and
-because the method is a variable, it can be split into showing me just
-data from driving or just data from public transport. The data will be
-useful for me because it can help me have an accurate judge of how long
-I should account for me to get to uni or to home.</p>
-<p><a href="https://forms.gle/ZJcWS5FopjzUCPMS8">Link -
-https://forms.gle/ZJcWS5FopjzUCPMS8</a></p>
-<p>Form design and data collection for this project were completed as a
-group. My group members were myself and Armand Spencer.</p>
-</div>
-<div id="dynamic-report" class="section level2">
-<h2>Dynamic report</h2>
-<p><a href="https://austin-540.github.io/stats220/">Link -
-https://austin-540.github.io/stats220/</a></p>
-</div>
-<div id="creativity" class="section level2">
-<h2>Creativity</h2>
-</div>
-<div id="learning-reflection" class="section level2">
-<h2>Learning reflection</h2>
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
@@ -561,7 +564,7 @@ ggplot(latest_data.rounded) +
 
 latest_data.bus &lt;- latest_data
 latest_data.car &lt;- latest_data
-for (i in nrow(latest_data):1) { #I&#39;m sure we will cover a much better way of doing this in a future module...
+for (i in nrow(latest_data):1) { #I feel like there might be a better way to do this in module 3...
   if (latest_data$method[i] == &quot;Bus&quot;) {
     latest_data.car &lt;- latest_data.car[-i,]
   } else if (latest_data$method[i] == &quot;Car&quot;) {
@@ -690,7 +693,7 @@ ggplot(latest_data.rounded) +
   theme_minimal() +
   labs(x = &quot;Duration in minutes - rounded to the closest 10 minutes&quot;,
        y = &quot;Number of journies&quot;,
-       title = &quot;Durations of people in the data&#39;s commutes to and from campus.&quot;,
+       title = &quot;Durations of tracked commutes to and from campus.&quot;,
   )
 
 
@@ -713,7 +716,32 @@ ggplot(mean_times) +
 
 ```
 
-There have been `r nrow(latest_data)` commutes timed in the data. The mean commute length recorded is `r round(mean(latest_data$duration),0)` minutes.</code></pre>
+There have been **`r nrow(latest_data)`** commutes timed in the data. The mean commute length recorded is **`r round(mean(latest_data$duration),0)`** minutes.
+
+***
+
+
+Coco&#39;s (dynamic) reaction to this information:
+
+```{r}
+library(magick)
+
+happy_coco &lt;- image_read(&quot;https://austin-540.github.io/stats220/docs/coco-happy.jpg&quot;) %&gt;% 
+  image_resize(&quot;400x400&quot;) %&gt;% #I am aware that one of those values isn&#39;t doing anything
+  image_annotate(text = &quot;How I feel speeding past the cars \nin the bus lane&quot;, size=20, gravity = &quot;north&quot;, boxcolor = &quot;#FFFFFF&quot;)
+
+surprised_coco &lt;- image_read(&quot;https://austin-540.github.io/stats220/docs/coco-surprised.jpg&quot;) %&gt;%
+  image_resize(&quot;400x400&quot;) %&gt;%
+  image_annotate(text = &quot;My face when the bus \nthat stops at every bus stop is \nslower than a car that doesn&#39;t&quot;, size=20, gravity = &quot;north&quot;, boxcolor = &quot;#FFFFFF&quot;)
+
+if (mean(latest_data.bus$duration) &gt; mean(latest_data.car$duration)) { #If the mean bus journey is longer
+  surprised_coco #Then show the surprised image
+} else {
+  happy_coco
+} #If the means are exactly equal then it shows the happy Coco image 
+#which I think is an acceptable thing to happen
+#because I like seeing happy Coco pictures
+```</code></pre>
 </div>
 
 

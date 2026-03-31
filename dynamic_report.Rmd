@@ -87,6 +87,29 @@ ggplot(mean_times) +
 
 ```
 
-There have been `r nrow(latest_data)` commutes timed in the data. The mean commute length recorded is `r round(mean(latest_data$duration),0)` minutes.
+There have been **`r nrow(latest_data)`** commutes timed in the data. The mean commute length recorded is **`r round(mean(latest_data$duration),0)`** minutes.
+
+***
 
 
+Coco's (dynamic) reaction to this information:
+
+```{r}
+library(magick)
+
+happy_coco <- image_read("https://austin-540.github.io/stats220/docs/coco-happy.jpg") %>% 
+  image_resize("400x400") %>% #I am aware that one of those values isn't doing anything
+  image_annotate(text = "How I feel speeding past the cars \nin the bus lane", size=20, gravity = "north", boxcolor = "#FFFFFF")
+
+surprised_coco <- image_read("https://austin-540.github.io/stats220/docs/coco-surprised.jpg") %>%
+  image_resize("400x400") %>%
+  image_annotate(text = "My face when the bus \nthat stops at every bus stop is \nslower than a car that doesn't", size=20, gravity = "north", boxcolor = "#FFFFFF")
+
+if (mean(latest_data.bus$duration) > mean(latest_data.car$duration)) { #If the mean bus journey is longer
+  surprised_coco #Then show the surprised image
+} else {
+  happy_coco
+} #If the means are exactly equal then it shows the happy Coco image 
+#which I think is an acceptable thing to happen
+#because I like seeing happy Coco pictures
+```

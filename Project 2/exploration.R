@@ -37,7 +37,7 @@ ggplot(latest_data.rounded) +
 
 latest_data.bus <- latest_data
 latest_data.car <- latest_data
-for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of doing this in a future module...
+for (i in nrow(latest_data):1) { #I feel like there might be a better way to do this in module 3...
   if (latest_data$method[i] == "Bus") {
     latest_data.car <- latest_data.car[-i,]
   } else if (latest_data$method[i] == "Car") {

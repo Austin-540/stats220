@@ -1,0 +1,73 @@
+---
+title: "Project 2"
+author: "Austin Sarney"
+output: 
+  html_document:
+    code_folding: hide
+subtitle: "STATS 220 Semester One, 2026"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+The focus of my data collection was seeing the duration of the commutes that Armand and I take to and from university. Because we also tend to take different methods of transport, this was also something that was tracked. Each observation was one journey from or to university.
+
+When designing the form we followed guideline 4 by using data validation. The question asking for the duration of the journey used response validation to ensure that only values between 1 and 120 were accepted (120 was chosen as the maximum time because that is about how long it takes to get to Auckland from Hamilton in the morning - which I consider to be the longest journey that still counts as a commute), with no non-number characters accepted. All the questions were made required because all commutes have a start time, method, and duration. 
+
+The data collected will allow me to see whether there is a difference between the time that it takes for me and my friend to commute, and because the method is a variable, it can be split into showing me just data from driving or just data from public transport. The data will be useful for me because it can help me have an accurate judge of how long I should account for me to get to uni or to home.
+
+[https://forms.gle/ZJcWS5FopjzUCPMS8](https://forms.gle/ZJcWS5FopjzUCPMS8)
+
+Form design and data collection for this project were completed as a group. My group members were myself and Armand Spencer.
+
+## Dynamic report
+
+[https://austin-540.github.io/stats220/](https://austin-540.github.io/stats220/)
+
+## Creativity
+My project demonstrates creativity by including a dynamic reaction image from my cat in the dynamic report. If the mean length of car commutes is faster or slower than bus commutes it will show a different image with a different caption. This used functions from magick from module 1. 
+
+My report is also creative because it used rounded values to create a more visually useful chart from rounded data because the original data was hard to interpret.
+
+## Learning reflection
+From module 2 I learned the important idea that we should validate data as much as possible (while still being accessible) on the front-end side if we want it to be easily worked with. It made it a lot easier to work with the data when I can know that Google Forms will only allow number values to end up in the duration column and won't allow NA values. I didn't need to do any data cleanup and I can be a little bit confident that the dynamic page hopefully won't break because someone put a bad value in.
+
+I am curious about seeing more of how we can use different types of data manipulation to create more useful data visualisations and insights. I suspect module 3's filter() function will be very useful for creating subsets of data, which can have more interesting values than just the overall mean, min, and max.
+
+I learned that it is important to ensure that you start group work well ahead of the deadline so that you have time to make any changes that may come from different ideas.
+
+
+## This document's CSS
+```{css}
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&display=swap');
+
+body {background: #001220;}
+#header {background: linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(255, 0, 68, 1) 50%, rgba(252, 176, 69, 1) 100%);color: white;}
+.author {font-family: "Micro 5", sans-serif;}
+h1, h2, h3 {font-family: "Cal Sans", sans-serif;}
+
+div:not(.main-container) {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px; 
+  padding: 10px;
+  margin: 10px;
+}
+
+/* I wish my other courses let me customise my assignments this much */
+
+```
+
+## Appendix
+
+```{r file='exploration.R', eval=FALSE, echo=TRUE}
+
+```
+```{r file='../dynamic_report.Rmd', eval=FALSE, echo=TRUE}
+
+```
+
+
+

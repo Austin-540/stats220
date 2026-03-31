@@ -57,7 +57,7 @@ latest_data <- rename(logged_data, timestamp = 1, method = 2, duration = 3, star
 latest_data_durations.rounded <- latest_data$duration %>% 
   round(-1) #Round the durations to the 10s place
 latest_data.rounded <- latest_data
-latest_data.rounded$duration <- latest_data_durations.rounded
+latest_data.rounded$duration <- latest_data_durations.rounded #then insert the rounded durations into a data frame
 
 ggplot(latest_data.rounded) + 
   geom_bar(aes(x=duration, fill = method)) + 
@@ -76,7 +76,7 @@ for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of do
   } else if (latest_data$method[i] == "Car") {
     latest_data.bus <- latest_data.bus[-i,]
   } 
-}
+}#Starting with the final element, go through each element and remove it from the different dfs if it isn't the corresponding method
 
 mean_times <- data.frame(method=c("Bus", "Car"), duration=c(mean(latest_data.bus$duration), mean(latest_data.car$duration)))
 ggplot(mean_times) + 

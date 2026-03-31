@@ -86,9 +86,10 @@ ggplot(latest_data.rounded) +
 latest_data.bus <- latest_data
 latest_data.car <- latest_data
 for (i in nrow(latest_data):1) { #I'm sure we will cover a much better way of doing this in a future module...
-  if (latest_data$method[i] == "Bus") {
+  # For each row in the data frames, starting with the final ones
+  if (latest_data$method[i] == "Bus") { #If its a bus journey, remove that row from the car df
     latest_data.car <- latest_data.car[-i,]
-  } else if (latest_data$method[i] == "Car") {
+  } else if (latest_data$method[i] == "Car") { #If its a car journey, remove that row from the bus df
     latest_data.bus <- latest_data.bus[-i,]
   } 
 }

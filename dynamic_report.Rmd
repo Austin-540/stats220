@@ -64,7 +64,7 @@ ggplot(latest_data.rounded) +
   theme_minimal() +
   labs(x = "Duration in minutes - rounded to the closest 10 minutes",
        y = "Number of journies",
-       title = "Durations of people in the data's commutes to and from campus.",
+       title = "Durations of tracked commutes to and from campus.",
   )
 
 

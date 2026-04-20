@@ -1,0 +1,69 @@
+---
+title: "Project 3"
+author: "Austin Sarney"
+output: 
+  html_document:
+    code_folding: hide
+subtitle: "STATS 220 Semester One, 2026"
+
+---
+
+```{css echo=FALSE}
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&display=swap');
+
+.author, .title, .subtitle, h2 {
+    background: linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(252, 69, 124, 1) 100%);
+    background-clip: text;
+    color: rgba(0,0,0,0);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: block;
+    width: max-content;
+    margin: 0px 0px 10px 0px;
+}
+
+.title {
+  font-size: 50px;
+}
+
+body {background: #EEEEEE;} 
+.author {font-family: "Micro 5", sans-serif;display: block;
+  width: max-content;}
+h1, h2, h3 {font-family: "Cal Sans", sans-serif;display: block;
+  width: max-content;}
+
+div.section, div#header {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px; 
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 8px 7px 7px #AAA
+}
+
+/* Fun fact: I started the CSS for this before I started revising for the test */
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+```
+
+## Introduction
+This is a new section
+
+## Key features of my selected photos
+This is a new section
+
+## Creativity
+This is a new section
+
+## Learning reflection
+This is a new section
+
+## Appendix
+```{r file='exploration.R', eval=FALSE, echo=TRUE}
+
+```
+```{r file='project3_report.Rmd', eval=FALSE, echo=TRUE}
+
+```

@@ -502,7 +502,74 @@ box-shadow: 8px 7px 7px #AAA
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
-<pre class="r"><code>#empty</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(httr)
+library(magick)
+library(stringr)
+
+api_key &lt;- Sys.getenv(&quot;apikey&quot;) #so I can upload this to github
+
+url &lt;- &quot;https://api.pexels.com/v1/search?query=blue%20cars&amp;per_page=80&quot;
+
+response &lt;- httr::GET(url, 
+                      add_headers(Authorization = api_key))
+
+data &lt;- httr::content(response, 
+                      as = &quot;parsed&quot;, 
+                      type = &quot;application/json&quot;)
+
+photo_data &lt;- tibble(photos = data$photos) %&gt;%
+  unnest_wider(photos) %&gt;%
+  unnest_wider(src)
+
+selected_photos &lt;- photo_data %&gt;%
+  filter(str_to_lower(substr(alt, 1, 1)) == &quot;a&quot;) %&gt;%
+  #Filter it down to only photos where the alt text either starts with &quot;A&quot; or &quot;a&quot;.
+  #This is personally relevant to me as A is the first letter of my name.
+  mutate(
+    is_portrait = width &lt; height, #If the photo is a square then it isn&#39;t portrait, so this will be false
+    words_in_photographers_username = str_count(photographer, &quot;\\S+&quot;), 
+    main_colour = ifelse( #If the red value is greater than the blue and green value
+        strtoi(
+          substr(avg_color, 2, 3), #Get the 2 hexadecimal digits after the &quot;#&quot;
+          base=16
+          ) &gt; strtoi(
+            substr(avg_color, 4, 5), 
+            base=16
+          ) &amp; strtoi(
+            substr(avg_color, 2, 3), 
+            base=16
+          ) &gt; strtoi(
+            substr(avg_color, 6, 7), 
+            base=16
+          ), 
+        &quot;red&quot;,
+        ifelse( #yay nested ifelse :)
+          #If the green value is greater than the red and blue
+          strtoi(
+            substr(avg_color, 4, 5), 
+            base=16
+          ) &gt; strtoi(
+            substr(avg_color, 2, 3), 
+            base=16
+          ) &amp; strtoi(
+            substr(avg_color, 4, 5), 
+            base=16
+          ) &gt; strtoi(
+            substr(avg_color, 6, 7), 
+            base=16
+          ), 
+          &quot;green&quot;,
+          &quot;blue&quot; 
+          #If any of the values are equal it will end up as blue
+          #I don&#39;t think this is a problem with the data I selected
+        )
+        
+    )
+    
+  )
+
+write_csv(selected_photos, &quot;selected_photos.csv&quot;)</code></pre>
 <pre class="r"><code>---
 title: &quot;Project 3&quot;
 author: &quot;Austin Sarney&quot;

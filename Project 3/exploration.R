@@ -71,8 +71,8 @@ write_csv(selected_photos, "selected_photos.csv")
 
 # part D
 
-percent_blue <- mean(selected_photos$main_colour == "blue") %>%
-  round(digits=3) * 100
+percent_blue <- mean(selected_photos$main_colour == "blue") %>% #proportion of photos where the main colour is blue
+  round(digits=3) * 100 #turned into a %
 print(paste0(percent_blue, "% of the selected photos have more blue than red or green"))
 
 
@@ -82,14 +82,15 @@ proportion_blue_portrait <- selected_photos %>%
   summarise(proportion_blue = mean(main_colour == "blue"))
 
 proportion_blue_not_portrait <- proportion_blue_portrait$proportion_blue[1]
-
+#proportion of the photos that are not portrait, which are mostly blue
 
 
 mean_num_author_words_by_is_portrait <- selected_photos %>%
   group_by(is_portrait) %>%
   summarise(mean_words_in_author = mean(words_in_photographers_username))
-difference <- round(mean_num_author_words_by_is_portrait$mean_words_in_author[1] - mean_num_author_words_by_is_portrait$mean_words_in_author[2], digits=3)
 
+difference <- round(mean_num_author_words_by_is_portrait$mean_words_in_author[1] - mean_num_author_words_by_is_portrait$mean_words_in_author[2], digits=3)
+#mean_words_in_author for non portrait minus for portrait
 
 
 # part E

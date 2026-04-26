@@ -32,8 +32,7 @@ subtitle: "STATS 220 Semester One, 2026"
 body {background: #EEEEEE;} 
 .author {font-family: "Micro 5", sans-serif;display: block;
   width: max-content;}
-h1, h2, h3 {font-family: "Cal Sans", sans-serif;display: block;
-  width: max-content;}
+h1, h2, h3 {font-family: "Cal Sans", sans-serif;display: block;}
 
 div.section:not(#my-selected-photos, #the-3-things-i-noticed-about-the-photos-were), div#header {
   background: rgba(255, 255, 255, 0.8);

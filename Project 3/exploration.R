@@ -90,6 +90,8 @@ mean_num_author_words_by_is_portrait <- selected_photos %>%
   summarise(mean_words_in_author = mean(words_in_photographers_username))
 difference <- round(mean_num_author_words_by_is_portrait$mean_words_in_author[1] - mean_num_author_words_by_is_portrait$mean_words_in_author[2], digits=3)
 
+
+
 # part E
 
 

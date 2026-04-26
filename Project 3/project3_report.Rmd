@@ -43,6 +43,9 @@ div.section:not(#my-selected-photos, #the-3-things-i-noticed-about-the-photos-we
   box-shadow: 8px 7px 7px #AAA
 }
 
+.figcaption {
+  color: #777;
+}
 /* Fun fact: I started the CSS for this before I started revising for the test */
 ```
 
@@ -112,10 +115,14 @@ In the selected photos, the usernames of the photographer had **`r difference`**
 
 
 ## Creativity
-This is a new section
+![an animated gif showing each of the selected photos. If the main colour of the photo is blue it says "BLUE PICTURE", otherwise it says "NOT MOSTLY BLUE!!"](creativity.gif)
+
+My project demonstrates creativity because I used the value of one of the extra variables I created in selected_photos inside an ifelse() function to have text for each image inside of my animated gif that dynamically changes the contents of the words that are added by image_annotate. This means that my gif can be somewhat informative about each image.
 
 ## Learning reflection
-This is a new section
+I think an important idea from module 3 is that we can create more variables without needing to collect more data. Having TRUE/FALSE summary values are easier to work with for ifelse functions, and having them be part of the data frame means that I didn't have to constantly rewrite the same line over and over comparing values from other columns. 
+
+I am curious about exploring more of how we can use APIs to automatically get data from frequently updating sources like weather forecasts to create dynamic reports which show us exactly the variables we care about by customizing the way we present the data once we have recieved it from the computer-readable JSON API.
 
 ## Appendix
 ```{r file='exploration.R', eval=FALSE, echo=TRUE}

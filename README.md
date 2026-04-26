@@ -6,6 +6,8 @@ Project 1 is at [https://austin-540.github.io/stats220/Project%201/project1_repo
 
 Project 2 is at [https://austin-540.github.io/stats220/Project%202/project2_report](https://austin-540.github.io/stats220/Project%202/project2_report)
 
+Project 3 is at [https://austin-540.github.io/stats220/Project%203/project3_report](https://austin-540.github.io/stats220/Project%203/project3_report)
+
 ## A little about me:
 
 * I am undertaking a degree in Stats and Computer Science

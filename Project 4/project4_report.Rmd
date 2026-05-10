@@ -1,0 +1,86 @@
+---
+title: "Project 4"
+author: "Austin Sarney"
+output: 
+  html_document:
+    code_folding: hide
+  
+---
+
+
+```{css echo=FALSE}
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Micro+5&display=swap');
+
+.author, .title, .subtitle, h2 {
+    margin: 0px 0px 10px 0px;
+}
+
+.author {
+    background: linear-gradient(90deg,#ED7B84 0%, #6290C8 50%, #49306B 100%);
+    background-clip: text;
+    color: rgba(0,0,0,0);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: block;
+    width: max-content;
+    margin: 0px 0px 10px 0px;
+    font-family: "Micro 5", sans-serif;display: block;
+    font-size: 30px;
+}
+
+body {background: #ECEBE4;} 
+
+h1, h2, h3 {font-family: "Cal Sans", sans-serif;display: block; color: #49306B;}
+
+div.section, div#header {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px; 
+  padding: 20px;
+  margin: 20px;
+  
+  animation: slideIn ease-in-out both;
+  animation-timeline: view();
+  animation-range: entry 5% entry 20%
+  
+}
+
+html {
+overflow-x: hidden;
+}
+
+.figcaption {
+  color: #777;
+}
+
+@keyframes slideIn {
+from {transform: translateX(50vw); background: rgba(98, 144, 200, 0.5)}
+to {transform: translateX(0px); background: rgba(255, 255, 255, 0.8)}
+}
+
+@media (prefers-reduced-motion: reduce) {div.section, div#header {animation: none !important;}}
+/* I hope the animation isn't too obnoxious for everyone else... */
+
+
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This is a section
+
+## Visual data story
+
+This is a section
+
+## Learning reflection
+
+This is a section
+
+## Appendix
+```{r file='data_visualisation.R', eval=FALSE, echo=TRUE}
+
+```

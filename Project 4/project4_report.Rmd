@@ -15,8 +15,13 @@ output:
     margin: 0px 0px 10px 0px;
 }
 
+.title {
+    color: #FFF !important;
+}
+
 .author {
-    background: linear-gradient(90deg,#ED7B84 0%, #6290C8 50%, #49306B 100%);
+    background: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%, rgba(255, 149, 0, 1) 20%, rgba(255, 229, 0, 1) 40%, rgba(0, 255, 149, 1) 60%, rgba(0, 47, 255, 1) 80%, rgba(191, 0, 255, 1) 100%);
+    /* I had to put a gradient somewhere :) */
     background-clip: text;
     color: rgba(0,0,0,0);
     background-size: 100% 100%;
@@ -25,14 +30,22 @@ output:
     width: max-content;
     margin: 0px 0px 10px 0px;
     font-family: "Micro 5", sans-serif;display: block;
-    font-size: 30px;
+    font-size: 40px; /* I do not know why Micro 5 looks so small by default */
+    text-shadow: 2px -2px 0 rgba(255, 255, 255, 0.7);/* to make it readable */
 }
 
 body {background: #ECEBE4;} 
 
 h1, h2, h3 {font-family: "Cal Sans", sans-serif;display: block; color: #49306B;}
 
-div.section, div#header {
+div#header {
+  background: #49306B !important;
+  border-radius: 10px; 
+  padding: 20px;
+  margin: 20px;
+}
+
+div.section {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px; 
   padding: 20px;
@@ -40,7 +53,7 @@ div.section, div#header {
   
   animation: slideIn ease-in-out both;
   animation-timeline: view();
-  animation-range: entry 5% entry 20%
+  animation-range: entry 10% entry 30%;
   
 }
 
@@ -53,7 +66,7 @@ overflow-x: hidden;
 }
 
 @keyframes slideIn {
-from {transform: translateX(50vw); background: rgba(98, 144, 200, 0.5)}
+from {transform: translateX(50vw); background: rgba(73, 48, 107, 0.5)}
 to {transform: translateX(0px); background: rgba(255, 255, 255, 0.8)}
 }
 

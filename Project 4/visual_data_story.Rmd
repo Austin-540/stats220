@@ -39,16 +39,16 @@ body {
 
 ## What's going on with this data?
 
-![Put alt text here](plot1.png)
+![A histogram showing the commute times for Austin and Armand. The most frequent time (rounded to the nearest 5 minutes) is 40 minutes.](plot1.png)
 
 ## Wait, another dancing cat?
 
-![Put alt text here](plot2.png)
+![A violin chart showing the commute times for Austin and Armand, split into AM and PM. The chart shows that PM commute times are more varied than AM.](plot2.png)
 
 
 ## A dance team of kittens!
 
-![Put alt text here](plot3.png)
+![A bar chart showing that for both Armand and Austin, project 4's data has a lower median commute duration than project 2](plot3.png)
 
 
 

@@ -511,7 +511,9 @@ to {transform: translateX(0px); background: rgba(255, 255, 255, 0.8)}
 </div>
 <div id="visual-data-story" class="section level2">
 <h2>Visual data story</h2>
-<p>This is a section</p>
+<p><a href="https://austin-540.github.io/stats220/Project%204/visual_data_story">Link
+to the visual data story</a></p>
+<p><DONT FORGET THE CREATIVITY PART></p>
 </div>
 <div id="learning-reflection" class="section level2">
 <h2>Learning reflection</h2>
@@ -533,29 +535,24 @@ my_colours = c(&quot;#ECEBE4&quot;, &quot;#49306B&quot;, &quot;#ED7B84&quot;, &q
 
 ggplot(logged_data) +
   geom_histogram(aes(x=duration, fill=method),
-                 binwidth = 5) +
+                 binwidth = 5) + #rounds to 5 minutes
   theme(
     plot.background = element_rect(fill= my_colours[1]),
     panel.background = element_rect(fill= my_colours[1]),
     panel.grid = element_blank(),
   ) +
-  guides(
-    fill = guide_legend( #From the tidyverse docs
-      title = &quot;Who commuted?&quot;, #Change the title of the legend to represent what the method variable actually means
-    )
-  ) + 
-  scale_fill_discrete( #Also from the tidyverse docs
+  scale_fill_discrete( #from the ggplot docs
     labels = c(&quot;Austin&quot;, &quot;Armand&quot;), #&quot;Bus&quot; = Austin, &quot;Car&quot; = Armand
     palette = my_colours[2:4]
   ) + 
   labs(
     title = &quot;How long does it take Austin and Armand to commute to/from university?&quot;,
     x = &quot;Length of commute in minutes (rounded to the nearest 5 minutes)&quot;,
-    y = &quot;Number of commutes&quot;
+    y = &quot;Number of commutes&quot;,
+    fill = &quot;Who commuted?&quot;
   )
-#Based on data frames you have created by manipulating data x2 ❌
-#Uses timestamp ❌
-#From a dataframe that uses group_by() and summarise() ❌
+  ggsave(&quot;plot1.png&quot;)
+
 
 
 logged_data &lt;- logged_data %&gt;%
@@ -567,15 +564,6 @@ logged_data &lt;- logged_data %&gt;%
     )
   )
 
-logged_data &lt;- logged_data %&gt;%
-  mutate(
-    twelve_hour_time = case_when(
-      am_or_pm == &quot;AM&quot; ~ paste0(start_time),
-      TRUE ~ paste(str_pad(hour(start_time) - 12, 2, pad=&quot;0&quot;, side=&quot;left&quot;) , str_pad(minute(start_time), 2, pad=&quot;0&quot;, side=&quot;left&quot;), &quot;00&quot;, sep=&quot;:&quot;) 
-      #Subtract 12 from the hour if it&#39;s a PM time
-      #Then turn it into a string because it was being weird when it was a num
-    )
-  )
 
 logged_data %&gt;%
   ggplot() +
@@ -585,14 +573,16 @@ logged_data %&gt;%
     panel.background = element_rect(fill= my_colours[1]),
     panel.grid = element_blank(),
     legend.position = &quot;none&quot;, #Banish the useless legend
-    axis.title.x = element_blank()
+    
   ) +
   facet_wrap(
     vars(am_or_pm),
     scale=&quot;free&quot;
   ) +
   labs(
-    title = &quot;What times of day are we commuting?&quot;
+    title = &quot;What times of day are we commuting?&quot;,
+    y = &quot;Commute start hour&quot;,
+    x = &quot;Who commuted?&quot;
   ) + 
   scale_fill_discrete( #from the ggplot docs
     palette = my_colours[2:4]
@@ -602,8 +592,8 @@ logged_data %&gt;%
       &quot;6&quot;=&quot;6&quot;, &quot;7&quot;=&quot;7&quot;, &quot;8&quot;=&quot;8&quot;, &quot;9&quot;=&quot;9&quot;, &quot;10&quot;=&quot;10&quot;, &quot;11&quot;=&quot;11&quot;, 
       &quot;12&quot;=&quot;12&quot;, &quot;13&quot;=&quot;1&quot;, &quot;14&quot;=&quot;2&quot;,&quot;15&quot;=&quot;3&quot;, &quot;16&quot;=&quot;4&quot;,&quot;17&quot;=&quot;5&quot;, &quot;18&quot;=&quot;6&quot;,&quot;19&quot;=&quot;7&quot;, &quot;20&quot;=&quot;8&quot;,
       &quot;21&quot;=&quot;9&quot;
-      
-    ), #Make it so it all shows up as 12h time
+      #Make it so it all shows up as 12h time
+    ), 
     breaks = c(6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)
   ) +
   scale_x_discrete(
@@ -611,7 +601,55 @@ logged_data %&gt;%
       &quot;Bus&quot; = &quot;Austin&quot;,
       &quot;Car&quot; = &quot;Armand&quot;
     )
-  )</code></pre>
+  ) 
+ggsave(&quot;plot2.png&quot;)
+
+
+
+logged_data &lt;- logged_data %&gt;%
+  mutate(project_number = ifelse(
+    dmy_hms(submitted_timestamp) &lt; ymd(&quot;2026-05-01&quot;),
+    &quot;Project 2&quot;,
+    &quot;Project 4&quot;
+  )) %&gt;%
+  mutate(
+    person = case_when(
+      method == &quot;Car&quot; ~ &quot;Armand&quot;,
+      method == &quot;Bus&quot; ~ &quot;Austin&quot;,
+      TRUE ~ &quot;Unknown person&quot;
+    )
+  )
+           
+
+
+
+logged_data %&gt;%
+  group_by(project_number, person) %&gt;%
+  summarise(median_duration = median(duration)) %&gt;%
+  ggplot() +
+  geom_col(
+    aes(x = project_number, y=median_duration, fill = project_number)
+  ) +
+  facet_wrap(
+    vars(person),
+  ) +
+  theme(
+    plot.background = element_rect(fill= my_colours[1]),
+    panel.background = element_rect(fill= my_colours[1]),
+    panel.grid = element_blank(),
+    legend.position = &quot;none&quot;, #Banish the legend
+    axis.ticks.x = element_blank(), #Banish the ticks
+    axis.text.x = element_text(margin = margin(t=-13)) #Move the labels up a bit so there isnt as much empty space
+  ) + 
+  scale_fill_discrete( #from the ggplot docs
+    palette = my_colours[2:4]
+  ) +
+  labs(
+    title = &quot;Has our median commute time changed between the project 2 and 4 data?&quot;,
+    x = &quot;Where is the data from?&quot;,
+    y = &quot;Median commute duration&quot;
+  ) 
+ggsave(&quot;plot3.png&quot;)</code></pre>
 </div>
 
 

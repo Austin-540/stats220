@@ -87,7 +87,11 @@ This is a section
 
 ## Visual data story
 
-This is a section
+[Link to the visual data story](https://austin-540.github.io/stats220/Project%204/visual_data_story)
+
+
+<DONT FORGET THE CREATIVITY PART>
+
 
 ## Learning reflection
 

@@ -507,17 +507,55 @@ to {transform: translateX(0px); background: rgba(255, 255, 255, 0.8)}
 </style>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is a section</p>
+<p>For this project, I worked with Armand Spencer to gather data about
+our commutes to and from university.</p>
+<p>We continued to use the same form as in project 2. our questions
+were: What method did you use? How many minutes did it take? and when
+did you start your commute? These questions are useful because they give
+us enough information about the commutes without putting anything
+unnecessary that makes it hard to fill out the form (following guideline
+2). The final question also follows guideline 4 because it validates
+that the value entered is a valid time.</p>
+<p>I chose to take the <code>method</code> variable and instead use it
+as a variable that shows whether the commute was by Austin or Armand. We
+chose this question in case we added someone else to our group, but this
+didn’t end up happening. Although this isn’t guaranteed by the form, we
+know that all of the bus commutes were by me and all the car commutes
+were by Armand.</p>
+<p>I chose to use geom_hist because it allowed me to set the
+<code>binwidth</code> which meant that the length would show up as a
+rounded value. This is much more useful than just unrounded values. I
+chose a geom_violin because it looked like it would be a good way of
+representing 1 discrete and 1 continuous variable. I chose geom_col
+because it allowed me to represent a discrete and continuous variable
+and showed a clear (even if small) decrease between the 2
+categories.</p>
 </div>
 <div id="visual-data-story" class="section level2">
 <h2>Visual data story</h2>
 <p><a href="https://austin-540.github.io/stats220/Project%204/visual_data_story">Link
 to the visual data story</a></p>
-<p><DONT FORGET THE CREATIVITY PART></p>
+<p>My visual data story shows creativity because I have used CSS to
+include my plots’ colour pallete in the background of the report, and
+heading text colour, which makes the presentation feel more cohesive. My
+first 2 plots also link in a way where the second plot answers a
+question that you might wonder from looking at the first plot, as part
+of a more cohesive data story.</p>
 </div>
 <div id="learning-reflection" class="section level2">
 <h2>Learning reflection</h2>
-<p>This is a section</p>
+<p>An important idea from module 4 is that we can use ggplot to add lots
+of different layers to plots to make them communicate what you want it
+to show. Each extra layer added to the plot to be better at
+communicating. I think this is especially true for scales and level
+labels because sometimes the target audience doesn’t need to know
+specific details (like how “Austin” was a more useful label than “Car”
+for my data).</p>
+<p>I am curious about how we can use more dynamic adjustments in ggplot.
+Many of my adjustments were reliant on me knowing ahead of time what the
+data is, so it would be useful for a dynamic report to be able to make
+adjustments that can keep doing what you want even with unpredictable
+data.</p>
 </div>
 <div id="appendix" class="section level2">
 <h2>Appendix</h2>
@@ -551,7 +589,7 @@ ggplot(logged_data) +
     y = &quot;Number of commutes&quot;,
     fill = &quot;Who commuted?&quot;
   )
-  ggsave(&quot;plot1.png&quot;)
+ggsave(&quot;plot1.png&quot;, width = 9, height = 6, unit= &quot;in&quot;)
 
 
 
@@ -602,7 +640,7 @@ logged_data %&gt;%
       &quot;Car&quot; = &quot;Armand&quot;
     )
   ) 
-ggsave(&quot;plot2.png&quot;)
+ggsave(&quot;plot2.png&quot;, width = 9, height = 6, unit= &quot;in&quot;)
 
 
 
@@ -649,7 +687,7 @@ logged_data %&gt;%
     x = &quot;Where is the data from?&quot;,
     y = &quot;Median commute duration&quot;
   ) 
-ggsave(&quot;plot3.png&quot;)</code></pre>
+ggsave(&quot;plot3.png&quot;, width = 9, height = 6, unit= &quot;in&quot;) # inches 🤮</code></pre>
 </div>
 
 

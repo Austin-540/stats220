@@ -28,7 +28,7 @@ ggplot(logged_data) +
     y = "Number of commutes",
     fill = "Who commuted?"
   )
-ggsave("plot1.png", width = 6, height = 4, unit= "in")
+ggsave("plot1.png", width = 9, height = 6, unit= "in")
 
 
 
@@ -79,7 +79,7 @@ logged_data %>%
       "Car" = "Armand"
     )
   ) 
-ggsave("plot2.png", width = 6, height = 4, unit= "in")
+ggsave("plot2.png", width = 9, height = 6, unit= "in")
 
 
 
@@ -126,7 +126,7 @@ logged_data %>%
     x = "Where is the data from?",
     y = "Median commute duration"
   ) 
-ggsave("plot3.png", width = 6, height = 4, unit= "in") # inches 🤮
+ggsave("plot3.png", width = 9, height = 6, unit= "in") # inches 🤮
     
   
 

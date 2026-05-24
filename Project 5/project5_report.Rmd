@@ -79,13 +79,26 @@ The main purpose of my visualisation is to show who has been making announcement
 
 this is a section
 
+DONT FORGET IT
+
 ## Learning reflection
 
-this is a section
+An important thing from module 5 is that it is still possible to automatically extract data from websites even if there isn't a convenient API that gives all the data to you cleanly. In this project we could still extract data quickly by using a web browser to download the HTML to bypass the beehive bot blockers. If I were to manually copy and paste each line of the page into a spreadsheet, it would have taken me much longer than it did to use rvest. 
+
+I am interested in exploring how data can be collected by repeatedly scraping things that change over time, such as the trending pages of social media websites. I think this data will be interesting to scrape automatically because it will be able to collect its own data so it can change over time without needing anyone to give it new data.
 
 ## Self review
 
-this is a section
+**Understanding R's error messages**
+
+While doing the projects for this course, because they were very open ended I had the opportunity to encounter many different error messages. 
+Here's an actual one from this project: "Error in `method(update_ggplot, list(class_any, ggplot2::ggplot))`:! Can't add `ministers_with_parties %>% ggplot()` to a <ggplot> object."
+While I still think the messages aren't super descriptive of the problem, I was still able to tell that there was a problem with a "+" somewhere in the code, and then I saw that I had a trailing "+" on the final part of the ggplot where there shouldn't be one. By seeing so many error messages I learned how to interpret their vague wording.
+
+
+**Manipulating data with `mutate()`**
+
+Ever since module 3 introduced it, this function has been very useful for almost every section of the remaining projects. Being able to create new variables that weren't present in the original data is extremely useful. In this project I found it useful to create cleaned versions of the party names, and other new variables. 
 
 ## Appendix
 

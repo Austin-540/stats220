@@ -68,7 +68,7 @@ I decided to focus on releases related to the Energy Portfolio from the current 
 
 When using data from the beehive website, I will need to accurately reproduce the material and acknowledge the source of the content. This doesn't include any photos from the website. (Source: https://www.beehive.govt.nz/copyright)
 
-From the robots.txt file, (assuming they intentionally used that "/"), I am allowed to automatically scrape their /search urls.
+From the [robots.txt file](https://www.beehive.govt.nz/robots.txt), (assuming they intentionally used that "/"), I am allowed to automatically scrape their /search urls.
 
 ## Visualisation
 
@@ -77,9 +77,7 @@ The main purpose of my visualisation is to show who has been making announcement
 
 ## Creativity
 
-this is a section
-
-DONT FORGET IT
+A creative thing in my project is the way that I scraped the party colours from the Wikipedia page for List of Political Parties in New Zealand. I first tried using the Wikipedia API but it didn't give me the colour hex values. According to the robots.txt file, slow robots are allowed to scrape Wikipedia articles. My script makes only 1 request, so it is allowed. This means that if the political parties ever change their colours, my code will automatically get the new colours from Wikipedia.
 
 ## Learning reflection
 
@@ -93,7 +91,7 @@ I am interested in exploring how data can be collected by repeatedly scraping th
 
 While doing the projects for this course, because they were very open ended I had the opportunity to encounter many different error messages. 
 Here's an actual one from this project: "Error in `method(update_ggplot, list(class_any, ggplot2::ggplot))`:! Can't add `ministers_with_parties %>% ggplot()` to a <ggplot> object."
-While I still think the messages aren't super descriptive of the problem, I was still able to tell that there was a problem with a "+" somewhere in the code, and then I saw that I had a trailing "+" on the final part of the ggplot where there shouldn't be one. By seeing so many error messages I learned how to interpret their vague wording.
+While I still think the messages aren't super descriptive of the problem, I was still able to tell that there was a problem with a "+" somewhere in the code, and then I saw that I had a trailing "+" on the final part of the ggplot where there shouldn't be one. By seeing so many error messages I learned how to interpret their vague wording better.
 
 
 **Manipulating data with `mutate()`**

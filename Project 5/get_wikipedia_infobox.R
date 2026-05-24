@@ -18,7 +18,7 @@ get_wikipedia_infobox <- function(search_query) {
     query = list(
       action = "query",
       list = "search",
-      srsearch = paste(search_query_no_hon, "New Zealand politician -disambiguation"), #Because it cant find Chris Bishop
+      srsearch = paste(search_query_no_hon, "New Zealand -disambiguation"), #Because it cant find Chris Bishop
       format = "json",
       srlimit = 1
     )

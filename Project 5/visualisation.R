@@ -31,7 +31,7 @@ ministers_with_parties <- ministers_with_parties %>%
   ),
   ) %>%
   group_by(party_clean) %>%
-  mutate(party_max_num_releases = max(releases)) %>% #So that I can make the legend show in non-alphabetical order
+  mutate(party_max_num_releases = max(releases)) %>% #So that I can make the legend show in a more natural order
   ungroup()
 
 
@@ -53,7 +53,7 @@ for (row in wikipedia_table %>% html_elements("tr")) { #woah its a for loop befo
   party_colour <- row %>% 
     html_element("td") %>% 
     html_attr("style") %>%
-    substr(18, 24)
+    substr(18, 24) 
   
   party_name <- row %>% #I promise chatgpt didn't write this
     html_elements("td:nth-child(2)") %>% #there was a weird error message where R didn't want to let me index into the list. So here I used a fancy html selector instead
@@ -76,9 +76,22 @@ mutate(party_clean = case_when(
 ministers_with_parties <- ministers_with_parties %>%
   left_join(party_data, by=c("party_clean"="party_clean"))
 
+party_data <- party_data %>%
+  inner_join(
+    ministers_with_parties %>% distinct(party_clean, .keep_all=TRUE),
+    by = "party_clean"
+  ) %>%
+  select("party_clean", "party_colour.x", "party_max_num_releases")
+
+
+party_data <- party_data %>%
+  arrange(desc(party_max_num_releases)) #Make it so the legend shows up in the sorted order
+
+
+
 ministers_with_parties %>%
-  ggplot(aes(fill=reorder(party_colour, -party_max_num_releases))) +
-  geom_col(aes(y=reorder(name, +releases), x=releases)) +
+  ggplot() +
+  geom_col(aes(y=reorder(name, +releases), x=releases, fill=party_colour)) +
   theme_minimal() +
   labs(
     title = "Who is making Energy Portfolio announcements in the current government?",
@@ -92,7 +105,8 @@ ministers_with_parties %>%
   ) +
   scale_fill_identity(
     guide = "legend", #by default there is no guide
-    labels = c("National", "NZ First", "ACT") #I tried to make this dynamic but it was way too much effort so i just hardcoded these labels
+    labels = party_data$party_clean, #These 2 lines match up the party name to colours
+    breaks = party_data$party_colour.x #so that the legend is correct
   )
   
 ggsave("my_viz.png", units = "in", width = 12, height = 8)

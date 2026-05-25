@@ -669,7 +669,7 @@ ministers_with_parties &lt;- ministers_with_parties %&gt;%
   ),
   ) %&gt;%
   group_by(party_clean) %&gt;%
-  mutate(party_max_num_releases = max(releases)) %&gt;% #So that I can make the legend show in non-alphabetical order
+  mutate(party_max_num_releases = max(releases)) %&gt;% #So that I can make the legend show in a more natural order
   ungroup()
 
 
@@ -691,7 +691,7 @@ for (row in wikipedia_table %&gt;% html_elements(&quot;tr&quot;)) { #woah its a 
   party_colour &lt;- row %&gt;% 
     html_element(&quot;td&quot;) %&gt;% 
     html_attr(&quot;style&quot;) %&gt;%
-    substr(18, 24)
+    substr(18, 24) 
   
   party_name &lt;- row %&gt;% #I promise chatgpt didn&#39;t write this
     html_elements(&quot;td:nth-child(2)&quot;) %&gt;% #there was a weird error message where R didn&#39;t want to let me index into the list. So here I used a fancy html selector instead
@@ -714,9 +714,22 @@ mutate(party_clean = case_when(
 ministers_with_parties &lt;- ministers_with_parties %&gt;%
   left_join(party_data, by=c(&quot;party_clean&quot;=&quot;party_clean&quot;))
 
+party_data &lt;- party_data %&gt;%
+  inner_join(
+    ministers_with_parties %&gt;% distinct(party_clean, .keep_all=TRUE),
+    by = &quot;party_clean&quot;
+  ) %&gt;%
+  select(&quot;party_clean&quot;, &quot;party_colour.x&quot;, &quot;party_max_num_releases&quot;)
+
+
+party_data &lt;- party_data %&gt;%
+  arrange(desc(party_max_num_releases)) #Make it so the legend shows up in the sorted order
+
+
+
 ministers_with_parties %&gt;%
-  ggplot(aes(fill=reorder(party_colour, -party_max_num_releases))) +
-  geom_col(aes(y=reorder(name, +releases), x=releases)) +
+  ggplot() +
+  geom_col(aes(y=reorder(name, +releases), x=releases, fill=party_colour)) +
   theme_minimal() +
   labs(
     title = &quot;Who is making Energy Portfolio announcements in the current government?&quot;,
@@ -730,7 +743,8 @@ ministers_with_parties %&gt;%
   ) +
   scale_fill_identity(
     guide = &quot;legend&quot;, #by default there is no guide
-    labels = c(&quot;National&quot;, &quot;NZ First&quot;, &quot;ACT&quot;) #I tried to make this dynamic but it was way too much effort so i just hardcoded these labels
+    labels = party_data$party_clean, #These 2 lines match up the party name to colours
+    breaks = party_data$party_colour.x #so that the legend is correct
   )
   
 ggsave(&quot;my_viz.png&quot;, units = &quot;in&quot;, width = 12, height = 8)</code></pre>
